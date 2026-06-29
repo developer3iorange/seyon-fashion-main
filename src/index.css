@@ -1,0 +1,363 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== THEME CSS VARIABLES — BLACK & WHITE ===== */
+:root {
+  --gold: #111111;
+  --gold-light: #444444;
+
+  --c-bg: #FFFFFF;
+  --c-bg-alt: #F5F5F5;
+  --c-bg-deep: #ECECEC;
+  --c-bg-card: rgba(0, 0, 0, 0.025);
+  --c-text: #111111;
+  --c-text-sec: rgba(17, 17, 17, 0.72);
+  --c-text-muted: rgba(17, 17, 17, 0.52);
+  --c-text-faint: rgba(17, 17, 17, 0.38);
+  --c-text-ultrafaint: rgba(17, 17, 17, 0.12);
+  --c-border: rgba(0, 0, 0, 0.10);
+  --c-border-subtle: rgba(0, 0, 0, 0.06);
+  --c-nav-scrolled: rgba(255, 255, 255, 0.97);
+  --c-gold: #111111;
+  --c-gold-bg: rgba(0, 0, 0, 0.04);
+  --c-gold-border: rgba(0, 0, 0, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  cursor: none;
+  overflow-x: hidden;
+}
+
+/* Custom Cursor — black */
+.custom-cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: #111111;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+}
+
+.custom-cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(17, 17, 17, 0.45);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s cubic-bezier(0.4, 0, 0.2, 1),
+              width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.2s ease;
+}
+
+body.cursor-hover .custom-cursor-dot {
+  width: 12px;
+  height: 12px;
+  background: #111111;
+}
+
+body.cursor-hover .custom-cursor-ring {
+  width: 52px;
+  height: 52px;
+  border-color: rgba(17, 17, 17, 0.7);
+}
+
+/* Fonts */
+.font-display {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Dark accent gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #111111, #555555);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Scroll animation helpers */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+
+/* Primary button — black */
+.btn-gold {
+  background: #111111;
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  padding: 0 32px;
+  height: 52px;
+  border-radius: 9999px;
+  border: none;
+  cursor: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+}
+
+.btn-gold:hover {
+  background: #333333;
+  transform: scale(1.03);
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.15);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #111111;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  padding: 0 32px;
+  height: 52px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(0, 0, 0, 0.22);
+  cursor: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+  text-decoration: none;
+}
+
+.btn-outline:hover {
+  border-color: #111111;
+  background: rgba(0, 0, 0, 0.05);
+  transform: scale(1.03);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #111111;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  padding: 0 32px;
+  height: 52px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(0, 0, 0, 0.18);
+  cursor: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.25s ease, background 0.25s ease;
+  text-decoration: none;
+}
+
+.btn-ghost:hover {
+  border-color: #111111;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 0, 0, 0.22);
+  transform: translateY(-4px);
+}
+
+/* Ticker animation */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes certTicker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  animation: ticker 30s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* Pulsing dots — black */
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.8); opacity: 0.4; }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+.map-dot::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #111111;
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* Section divider — black */
+.gold-divider {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, #111111, transparent);
+}
+
+/* Scroll indicator */
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0.4; }
+}
+
+.scroll-indicator {
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+/* Loading screen */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: #FFFFFF;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes loader-line {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.loader-line {
+  animation: loader-line 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Page transition */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Stagger children */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stagger-children.visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0ms; }
+.stagger-children.visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 100ms; }
+.stagger-children.visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 200ms; }
+.stagger-children.visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 300ms; }
+.stagger-children.visible > *:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 400ms; }
+.stagger-children.visible > *:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 500ms; }
+
+/* Nav */
+.nav-glass {
+  background: transparent;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease, border-bottom 0.4s ease;
+}
+
+.nav-glass.scrolled {
+  background: var(--c-nav-scrolled);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--c-border);
+}
+
+/* ===== JUSTIFIED BODY TEXT ===== */
+/*
+  Apply justified alignment to all descriptive paragraph content.
+  Labels, headings, centered sections, and short UI text
+  are excluded via their own text-center / text-left Tailwind classes.
+*/
+p {
+  text-align: justify;
+}
+
+/* Restore centre for elements that explicitly opt-in to centred layout */
+.text-center p,
+p.text-center,
+p.text-left,
+p[style*="text-align"] {
+  text-align: inherit;
+}
+
+/* Counter number — black gradient */
+.counter-number {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(135deg, #111111, #555555);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
