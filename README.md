@@ -4,6 +4,8 @@ Premium B2B marketing site for **Seyon Fashions** — a vertically integrated ap
 
 Built with React, TypeScript, Vite, Tailwind CSS, and React Router. Static content with RFQ and newsletter forms handled by the Readdy Forms API.
 
+Live URL - [https://seyon-fashion-main.vercel.app/]
+
 ## Requirements
 
 - **Node.js** 20 or later
