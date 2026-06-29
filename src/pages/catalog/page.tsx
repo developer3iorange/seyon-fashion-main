@@ -96,7 +96,6 @@ const CatalogPage = () => {
                   style={{
                     fontFamily: 'Plus Jakarta Sans, sans-serif',
                     color: activeTab === tab ? '#111111' : 'var(--c-text-faint)',
-                    borderBottom: activeTab === tab ? '2px solid #111111' : '2px solid transparent',
                     background: 'transparent',
                     border: 'none',
                     borderBottom: activeTab === tab ? '2px solid #111111' : '2px solid transparent',
